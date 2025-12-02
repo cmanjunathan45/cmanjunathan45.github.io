@@ -337,12 +337,20 @@ body.dev-mode a:hover {
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        margin: 10px;
-        width: auto;
+    /* 1. GRID LAYOUT FIXES & 11. REMOVE OVERFLOW ISSUES */
+    html, body {
+        overflow-x: hidden !important;
     }
 
+    .grid-container {
+        grid-template-columns: 1fr !important;
+        margin: 0 !important;
+        max-width: 100%;
+        border: none;
+        width: 100%;
+    }
+
+    /* 2. SIDEBAR OPTIMIZATION */
     .sidebar {
         padding: 10px;
         border-right: none;
@@ -350,39 +358,118 @@ body.dev-mode a:hover {
     }
 
     .profile-pic {
-        width: 70%;
+        width: 60%;
         margin: 0 auto 20px auto;
     }
 
-    .profile-header {
-        text-align: center;
-    }
-
-    .contact-info {
-        text-align: center;
-    }
-    
-    /* Collapsible Education on Mobile */
+    .profile-header, 
+    .contact-info, 
     .education-mini {
         text-align: center;
     }
-}    20% { clip: rect(10px, 9999px, 20px, 0); }
-    40% { clip: rect(80px, 9999px, 10px, 0); }
-    60% { clip: rect(30px, 9999px, 50px, 0); }
-    80% { clip: rect(20px, 9999px, 90px, 0); }
-    100% { clip: rect(50px, 9999px, 60px, 0); }
-}
 
-/* Responsive */
-@media (max-width: 768px) {
-    .grid-container {
-        grid-template-columns: 1fr;
-        margin: 0;
-        border: none;
+    .status-indicator {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+    }
+
+    /* 3. TYPOGRAPHY SCALING */
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .exp-role, 
+    .exp-company {
+        font-size: 0.9rem;
+    }
+
+    p {
+        line-height: 1.7;
+    }
+
+    /* 4. CONTENT WIDTH CONTROL */
+    .section-panel {
+        padding: 20px 15px !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* 5. EXPERIENCE SECTION FIXES */
+    .exp-item {
+        padding-left: 10px;
+    }
+
+    .exp-item::before {
+        left: -2px;
+    }
+
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .exp-date {
+        white-space: normal;
+    }
+
+    /* 6. SKILLS GRID IMPROVEMENT */
+    .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 6px;
+    }
+
+    .skill-tag {
+        font-size: 0.75rem;
+    }
+
+    /* 7. SECTION TITLE LINE FIX */
+    .section-title::after {
+        display: none;
+    }
+
+    /* 8. BUTTON RESPONSIVENESS */
+    .sidebar a[href="developer.html"], 
+    .sidebar a[href="index.html"] {
+        display: block;
+        width: 100%;
+        padding: 12px !important;
+        font-size: 0.85rem !important;
+        text-align: center;
+        margin-top: 20px !important;
+        box-sizing: border-box;
     }
     
-    .sidebar {
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
+    /* 9. PUBLICATIONS AND PROJECT CARDS */
+    a i {
+        width: auto;
+    }
+
+    .exp-details {
+        padding: 0 5px;
+    }
+
+    /* 10. SCANLINE BACKGROUND RESPONSIVENESS */
+    body::before {
+        background-size: 100% 3px, 4px 100%;
+    }
+
+    /* 12. IMPROVE TAP TARGETS */
+    .contact-item, 
+    .exp-date, 
+    .switch-portfolio {
+        padding: 8px 0;
+        display: block;
+    }
+
+    /* 13. OPTIONAL AESTHETIC IMPROVEMENTS */
+    .grid-container, 
+    .sidebar, 
+    .section-panel, 
+    .skill-tag, 
+    .exp-date {
+        border-width: 0.5px;
     }
 }
